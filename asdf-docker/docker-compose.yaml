@@ -1,0 +1,7 @@
+---
+version: "3"
+services:
+  asdf-docker:
+    image: ${REGISTRY_DOCKER:-docker.io}/${REPO_DOCKER:-katie/asdf-docker}:${VERSION_IMAGE:-latest}
+    build:
+      context: .
