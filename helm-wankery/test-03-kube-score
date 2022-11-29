@@ -1,0 +1,21 @@
+#!/bin/bash
+set -o pipefail
+name="${0##*/}"
+export HELM_NAMESPACE="$name"
+cleanup() {
+	:
+}
+runtest() {
+	local rc=0
+	(set -x; helm template "$1" "./$1" | kube-score score --output-format ci -) || rc="$?"
+	echo "Expected $2 got $rc"
+	[ "$rc" == "$2" ]
+}
+cleanup
+set -e
+runtest wankery 1
+runtest wankery-broken-api-1 1
+runtest wankery-broken-api-2 1
+runtest wankery-deprecated 1
+set +ex
+cleanup
