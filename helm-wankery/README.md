@@ -26,7 +26,7 @@ microk8s config > .kube.config
 
 * Catches when resource exists and is not yet managed
 * Catches when API is not available
-* No warning on deprecated APIs
+* No non-zero exit code on deprecated API.  Warning is in stderr
 * No warning on API mismatch
 
 ### upgrade --install
