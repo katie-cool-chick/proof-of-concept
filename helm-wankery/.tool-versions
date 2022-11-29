@@ -2,3 +2,4 @@ helm 3.10.2
 kubectl 1.25.4
 kubeval 0.16.0
 kube-score 1.14.0
+polaris 7.2.0
